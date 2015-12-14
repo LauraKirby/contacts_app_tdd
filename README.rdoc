@@ -1,3 +1,16 @@
 == My Contacts  
 
 Implement outside-in test driven development, using Capybara and RSPEC  
+
+##Next Steps:  
+- Write UI tests for data field when creating a new contact.
+- Write controller tests for creating a new contact.  
+		-- Model and UI tests have been written. 
+- Write controller, route, and view code for creating a new contact. 
+- Write UI tests for contact information to appear on index page 
+- Write model and controller tests for Date model   
+	-- Contact should have many Dates  
+	-- Date belongs to Contact  
+- Create Date Model  
+- Add date field to UI on '/contacts/new'  
+- Add date field to '/contacts'  
