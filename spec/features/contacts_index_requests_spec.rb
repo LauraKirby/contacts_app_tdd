@@ -9,5 +9,5 @@ describe 'visiting the contacts index page' do
 	it 'user can click the "Add Contact" button' do 
 		visit "/"
 		expect(page).to have_selector(:link_or_button, 'Add Contact')
-	end 
+	end
 end
