@@ -1,11 +1,17 @@
-<form action="/users" method="post">
+<% if @contact.errors.full_messages.any? %>
+  <% @contact.errors.full_messages.each do |error_message| %>
+    <%= error_message %><br />
+  <% end %>
+<% end %>
+
+<form action="/contacts" method="post">
 	<div>
 		<label for="contact_name">Name:</label>
-		<input type="text" id="contact_name">
+		<input name="contact[first_name]" type="text" id="contact_name">
 	</div>
 	<div>
 		<label for="contact_email">Email:</label>
-		<input type="text" id="contact_email">
+		<input name="contact[email]" type="text" id="contact_email">
 	</div>
 	<div>
 		<button type="submit">Create</button>
