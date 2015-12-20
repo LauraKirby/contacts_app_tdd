@@ -16,5 +16,15 @@ Implement outside-in test driven development, using Capybara and RSPEC
 
 ##Questions:  
 - How to test:
- 	-  whether or not a view exists? the feature spec tests whether or not the view exists
+ 	- whether or not a view exists? the feature spec tests whether or not the view exists
  	- post action (see contacts_spec.rb)
+
+- could do a find by sql or join using sql
+
+
+##Next Steps:  
+- shoulda matchers to test associations bw contacts and appointments  
+- don't need more tests for appointment model  
+- create migration for new model  
+- make feature spec pass: show number of appointments to pass  
+- write a new feature spec for most recent appointment date to show in the view  

@@ -11,6 +11,7 @@ class ContactsController < ApplicationController
   	@contact = Contact.new(contact_params)
 
   	if @contact.save
+      @appt_total = @contact.appointments.count
   		redirect_to root_path
   	else 
   		render :new 

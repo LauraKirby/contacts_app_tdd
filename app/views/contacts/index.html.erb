@@ -1,6 +1,16 @@
 <h1>My Contacts</h1>
+<table>
+<th>First name</th>
+<th>Email</th>
+<th># of appointments</th>
+
 <% @contacts.each do |contact| %>
-  <%= contact.first_name %>
-  <%= contact.email %>
+  <tr>
+  <td><%= contact.first_name %></td>
+  <td><%= contact.email %></td>
+  </tr>
 <% end %>
+
+</table>
+
 <a href="/contacts/new">Add Contact</a>
