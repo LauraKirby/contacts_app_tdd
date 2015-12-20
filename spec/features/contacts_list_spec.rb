@@ -11,14 +11,24 @@ describe 'visiting the contacts index page' do
 		expect(page).to have_selector(:link_or_button, 'Add Contact')
 	end
 
-	it 'shows number of appointments for each contact' do 
-		Contact.create(:first_name => "Laura", :email => "laura@mail.com")
-		contact = Contact.create(:first_name => "Laura", :email => "laura@mail.com")
-		Appointment.create(contact: contact)
-    Appointment.create(contact: contact)
-    
-		visit "/"
+	describe 'has appointments column' do
 
-		expect(page).to have_content("0 appointments")
+		before(:each) do 
+			Contact.create(:first_name => "Laura", :email => "laura@mail.com")
+			@contact = Contact.create!(:first_name => "Laura", :email => "laura@mail.com")
+		end 
+
+		it 'displays 0 when contact has none' do 
+			visit "/"
+			expect(page).to have_content("0")
+		end 
+
+		it 'displays 2 when there are 2' do 
+			@contact.appointments.create!
+			@contact.appointments.create!
+			visit "/"
+			expect(page).to have_content("2")
+		end 
+
 	end 
 end 
