@@ -14,7 +14,6 @@ describe 'visiting the contacts index page' do
 	describe 'has appointments column' do
 
 		before(:each) do 
-			Contact.create(:first_name => "Laura", :email => "laura@mail.com")
 			@contact = Contact.create!(:first_name => "Laura", :email => "laura@mail.com")
 		end 
 
@@ -23,12 +22,26 @@ describe 'visiting the contacts index page' do
 			expect(page).to have_content("0")
 		end 
 
-		it 'displays 2 when there are 2' do 
-			@contact.appointments.create!
-			@contact.appointments.create!
-			visit "/"
-			expect(page).to have_content("2")
-		end 
+    describe 'when there are 2 appointments' do
 
+    	before(:each) do 
+    		@contact.appointments.create!
+    		@contact.appointments.create!
+    	end 
+
+			it 'displays the number 2' do 
+				visit "/"
+				expect(page).to have_content("2")
+			end 
+
+			it 'displays most recent appointment date' do
+				@contact.appointments[0].starts_at = Date.new(1995, 11, 17)
+				@contact.appointments[0].save!
+
+				visit "/"
+				#expect(page).to have_content("11/17/1995")
+				expect(page).to have_content("1995-11-17")
+			end 
+		end
 	end 
 end 

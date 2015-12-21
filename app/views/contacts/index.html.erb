@@ -3,12 +3,20 @@
 <th>First name</th>
 <th>Email</th>
 <th># of appointments</th>
+<th>Most Recent Appointment</th>
 
 <% @contacts.each do |contact| %>
   <tr>
   <td><%= contact.first_name %></td>
   <td><%= contact.email %></td>
+  <!-- td><%#= contact.most_recent_appointment %></td -->
+
   <td><%= contact.appointments.size %></td>
+  <% if contact.appointments.size > 0 %>
+  <td><%= appt = contact.appointments.where.not('appointments.starts_at' => nil).order("starts_at").last;
+         appt.starts_at unless appt.nil?%></td>
+  <% end %>
+  <!-- <td><%#= most_recent_appointment(contact) %></td> -->
   </tr>
 <% end %>
 

@@ -12,6 +12,7 @@ describe Contact do
 		end
 
 		describe "Validations" do
+
       it "is invalid if first name is nil" do
          contact = Contact.new(first_name: nil, email: "test@example.com")
 
