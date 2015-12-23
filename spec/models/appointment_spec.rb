@@ -8,8 +8,8 @@ describe Appointment do
   end
 
   it "returns an appointment's start date as a string" do
-  	@appointment = Appointment.create!(:starts_at => Date.new(1995, 11, 17))
-  	date = Date.new(1995, 11, 17)
+    @appointment = Appointment.create!(:starts_at => Date.new(1995, 11, 17))
+    date = Date.new(1995, 11, 17)
     expect(@appointment.starts_at).to eq (date)
   end
 end
