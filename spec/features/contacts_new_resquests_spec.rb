@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-feature 'visiting the new contact page' do 
+feature 'visiting the new contact page' do
 
  	before(:each) do
 		visit "/contacts/new"
-	end 
+	end
 
 	scenario 'fill out and submit new contact form' do
 		# setup - CHECK
@@ -18,15 +18,15 @@ feature 'visiting the new contact page' do
 
 		# teardown - FREE (see spec helper)
 
-	end 
+	end
 
 	scenario 'contact is saved successfully and it displayed on the index page' do
     fill_in "Name", with: "Contact name"
     fill_in "Email", with: "email@example.com"
     click_on "Create"
 
-  	expect(page).to have_content "Contact name"
-  	expect(page).to have_content "email@example.com"
+    expect(page).to have_content "Contact name"
+    expect(page).to have_content "email@example.com"
 	end
 
 	context 'contact is not saved successfully' do
@@ -38,21 +38,21 @@ feature 'visiting the new contact page' do
     end
   end
 
-	it "has a form with a name and email field" do 
+	it "has a form with a name and email field" do
 		expect(page).to have_field 'Name'
 		expect(page).to have_field 'Email'
 	end
 
-	it "has a button to submit/post a new conact" do 
+	it "has a button to submit/post a new conact" do
 		expect(page).to have_button 'Create'
 	end
 
 	it "will redirect user to contacts index" do
 
-	end 
+	end
 
 	# it "shows a list of all contacts created" do
 	# 	# if contact then contact.name
-	# end 
+	# end
 
 end

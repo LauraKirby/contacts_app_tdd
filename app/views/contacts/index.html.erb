@@ -4,22 +4,19 @@
 <th>Email</th>
 <th># of appointments</th>
 <th>Most Recent Appointment</th>
-
-<% @contacts.each do |contact| %>
-  <tr>
-  <td><%= contact.first_name %></td>
-  <td><%= contact.email %></td>
-  <!-- td><%#= contact.most_recent_appointment %></td -->
-
-  <td><%= contact.appointments.size %></td>
-  <% if contact.appointments.size > 0 %>
-  <td><%= appt = contact.appointments.where.not('appointments.starts_at' => nil).order("starts_at").last;
-         appt.starts_at unless appt.nil?%></td>
+  <% @contacts.each do |contact| %>
+    <tr>
+    <td><%= contact.first_name %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.appointments.size %></td>
+    <!-- for recent appointment date my goal is to write something like:  -->
+    <!-- <td><%#= most_recent_appointment(contact) %></td> -->
+    <% if contact.appointments.size > 0 %>
+    <!-- shouldn't appointments.starts_at have an index? -->
+    <td><%= appt = contact.appointments.where.not('appointments.starts_at' => nil).order("starts_at").last;
+      appt.starts_at unless appt.nil?%></td>
+    <% end %>
+    </tr>
   <% end %>
-  <!-- <td><%#= most_recent_appointment(contact) %></td> -->
-  </tr>
-<% end %>
-
 </table>
-
 <a href="/contacts/new">Add Contact</a>
