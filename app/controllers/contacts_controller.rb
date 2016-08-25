@@ -10,6 +10,7 @@ class ContactsController < ApplicationController
   end
 
   def new
+    # do we need this here?
     @contact = Contact.new
   end
 
